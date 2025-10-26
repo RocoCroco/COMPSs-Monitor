@@ -1,0 +1,26 @@
+apiVersion: 1
+datasources:
+  - name: grafana-postgresql-datasource
+    type: postgres
+    access: proxy
+    url: events-db:5432
+    database: events
+    user: events
+    uid: postgres-events
+    secureJsonData:
+      password: events
+    jsonData:
+      sslmode: "disable"
+      postgresVersion: 1500
+      timescaledb: false
+    isDefault: true
+    editable: true
+
+  - name: prometheus
+    type: prometheus
+    access: proxy
+    url: http://prometheus:9090
+    isDefault: false
+    uid: prometheus-metrics
+    editable: true
+

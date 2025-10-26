@@ -1,0 +1,71 @@
+services:
+  otel-collector:
+    image: otel/opentelemetry-collector-contrib:0.99.0
+    command: ["--config=/etc/otel-collector.yaml"]
+    volumes:
+      - ./otel-collector.yaml:/etc/otel-collector.yaml:ro
+    ports:
+      - "4317:4317"    # OTLP gRPC (agentes)
+      - "4318:4318"    # OTLP HTTP (opcional)
+      - "9464:9464"    # /metrics para Prometheus
+    restart: unless-stopped
+
+  prometheus:
+    image: prom/prometheus:v2.55.0
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    ports:
+      - "9090:9090"
+    depends_on: [otel-collector]
+    restart: unless-stopped
+    
+  events-db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: events
+      POSTGRES_USER: events
+      POSTGRES_PASSWORD: events
+    ports: ["5432:5432"]
+    volumes:
+      - ./events-init.sql:/docker-entrypoint-initdb.d/001-init.sql:ro
+    restart: unless-stopped
+
+  events-api:
+    build:
+      context: ./events-api
+      dockerfile: Dockerfile
+    environment:
+      DB_DSN: postgresql://events:events@events-db:5432/events
+    ports: ["8088:8088"]
+    depends_on: [events-db]
+    restart: unless-stopped
+    
+  grafana:
+    image: grafana/grafana:11.1.0
+    ports: ["3000:3000"]
+    environment:
+      GF_SECURITY_ADMIN_USER: admin
+      GF_SECURITY_ADMIN_PASSWORD: admin
+      # Configuración de autenticación automática
+      GF_AUTH_ANONYMOUS_ENABLED: "true"
+      GF_AUTH_ANONYMOUS_ORG_NAME: "Main Org."
+      GF_AUTH_ANONYMOUS_ORG_ROLE: "Viewer"
+      GF_AUTH_DISABLE_LOGIN_FORM: "false"  # Mantener form por si acaso
+      # Opcional: deshabilitar registro de usuarios
+      GF_USERS_ALLOW_SIGN_UP: "false"
+      # No requerir cambio de contraseña
+      GF_SECURITY_FORCE_DEFAULT_ADMIN_PASSWORD_CHANGE: "false"
+      # Embedding (permite que te embelezcan en iframes)
+      GF_SECURITY_ALLOW_EMBEDDING: "true"
+      GF_SECURITY_CONTENT_SECURITY_POLICY: "true"
+    volumes:
+      # Provisioning automático de datasources
+      - ./grafana/provisioning:/etc/grafana/provisioning:ro
+      # Persistir configuración y base de datos de Grafana
+      - grafana-storage:/var/lib/grafana
+    depends_on: [events-db, prometheus]
+    restart: unless-stopped
+
+volumes:
+  grafana-storage:  # Volumen persistente para Grafana
+

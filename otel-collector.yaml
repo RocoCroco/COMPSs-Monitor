@@ -1,0 +1,35 @@
+receivers:
+  otlp:
+    protocols:
+      grpc: {}
+      http: {}
+
+processors:
+  batch: {}
+
+exporters:
+  # Expondrá /metrics para Prometheus
+  prometheus:
+    endpoint: "0.0.0.0:9464"
+
+  # Envía trazas a Tempo (gRPC sin TLS en la red docker)
+  otlp/tempo:
+    endpoint: tempo:4317
+    tls:
+      insecure: true
+
+  # Útil para ver que llegan spans (logs del collector)
+  debug:
+    verbosity: basic
+
+service:
+  pipelines:
+    traces:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [debug, otlp/tempo]
+    metrics:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [prometheus]
+

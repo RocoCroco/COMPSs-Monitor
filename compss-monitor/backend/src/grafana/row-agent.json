@@ -1,0 +1,1250 @@
+[
+  {
+    "collapsed": false,
+    "gridPos": {
+      "h": 1,
+      "w": 24,
+      "x": 0,
+      "y": 0
+    },
+    "id": 4,
+    "panels": [],
+    "title": "Agent1(127.0.0.1)",
+    "type": "row"
+  },
+  {
+    "datasource": {
+      "uid": "prometheus-metrics",
+      "type": "prometheus"
+    },
+    "fieldConfig": {
+      "defaults": {
+        "custom": {
+          "drawStyle": "line",
+          "lineInterpolation": "linear",
+          "barAlignment": 0,
+          "lineWidth": 1,
+          "fillOpacity": 0,
+          "gradientMode": "none",
+          "spanNulls": false,
+          "insertNulls": false,
+          "showPoints": "auto",
+          "pointSize": 5,
+          "stacking": {
+            "mode": "none",
+            "group": "A"
+          },
+          "axisPlacement": "auto",
+          "axisLabel": "",
+          "axisColorMode": "text",
+          "axisBorderShow": false,
+          "scaleDistribution": {
+            "type": "linear"
+          },
+          "axisCenteredZero": false,
+          "hideFrom": {
+            "tooltip": false,
+            "viz": false,
+            "legend": false
+          },
+          "thresholdsStyle": {
+            "mode": "off"
+          },
+          "axisSoftMin": 0,
+          "axisSoftMax": 100
+        },
+        "color": {
+          "mode": "palette-classic"
+        },
+        "mappings": [],
+        "thresholds": {
+          "mode": "absolute",
+          "steps": [
+            {
+              "color": "green",
+              "value": null
+            },
+            {
+              "color": "#EAB839",
+              "value": 70
+            },
+            {
+              "color": "red",
+              "value": 85
+            }
+          ]
+        },
+        "unit": "percent"
+      },
+      "overrides": []
+    },
+    "gridPos": {
+      "h": 6,
+      "w": 12,
+      "x": 0,
+      "y": 1
+    },
+    "id": 2,
+    "options": {
+      "tooltip": {
+        "mode": "single",
+        "sort": "none"
+      },
+      "legend": {
+        "showLegend": false,
+        "displayMode": "list",
+        "placement": "bottom",
+        "calcs": []
+      }
+    },
+    "pluginVersion": "11.1.0",
+    "targets": [
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "prometheus-metrics"
+        },
+        "disableTextWrap": false,
+        "editorMode": "builder",
+        "expr": "cpu_percent{compss_master_name=\"127.0.0.1\"}",
+        "fullMetaSearch": false,
+        "hide": false,
+        "includeNullMetadata": true,
+        "instant": false,
+        "legendFormat": "{{__name__}}",
+        "range": true,
+        "refId": "A",
+        "useBackend": false
+      }
+    ],
+    "title": "CPU Usage",
+    "type": "timeseries",
+    "interval": "1s"
+  },
+  {
+    "datasource": {
+      "uid": "prometheus-metrics",
+      "type": "prometheus"
+    },
+    "fieldConfig": {
+      "defaults": {
+        "custom": {
+          "drawStyle": "line",
+          "lineInterpolation": "linear",
+          "barAlignment": 0,
+          "lineWidth": 1,
+          "fillOpacity": 0,
+          "gradientMode": "none",
+          "spanNulls": false,
+          "insertNulls": false,
+          "showPoints": "auto",
+          "pointSize": 5,
+          "stacking": {
+            "mode": "none",
+            "group": "A"
+          },
+          "axisPlacement": "auto",
+          "axisLabel": "",
+          "axisColorMode": "text",
+          "axisBorderShow": false,
+          "scaleDistribution": {
+            "type": "linear"
+          },
+          "axisCenteredZero": false,
+          "hideFrom": {
+            "tooltip": false,
+            "viz": false,
+            "legend": false
+          },
+          "thresholdsStyle": {
+            "mode": "off"
+          }
+        },
+        "color": {
+          "mode": "thresholds"
+        },
+        "mappings": [],
+        "thresholds": {
+          "mode": "absolute",
+          "steps": [
+            {
+              "color": "green",
+              "value": null
+            },
+            {
+              "color": "#EAB839",
+              "value": 70
+            },
+            {
+              "color": "red",
+              "value": 85
+            }
+          ]
+        },
+        "unit": "percent",
+        "min": 0,
+        "max": 100
+      },
+      "overrides": []
+    },
+    "gridPos": {
+      "h": 6,
+      "w": 12,
+      "x": 12,
+      "y": 1
+    },
+    "id": 3,
+    "options": {
+      "tooltip": {
+        "mode": "single",
+        "sort": "none"
+      },
+      "legend": {
+        "showLegend": false,
+        "displayMode": "list",
+        "placement": "bottom",
+        "calcs": []
+      }
+    },
+    "pluginVersion": "11.1.0",
+    "targets": [
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "prometheus-metrics"
+        },
+        "disableTextWrap": false,
+        "editorMode": "builder",
+        "expr": "mem_percentage_used_percent{compss_master_name=\"127.0.0.1\"}",
+        "fullMetaSearch": false,
+        "hide": false,
+        "includeNullMetadata": true,
+        "instant": false,
+        "legendFormat": "{{__name__}}",
+        "range": true,
+        "refId": "A",
+        "useBackend": false
+      }
+    ],
+    "title": "Memory Usage",
+    "type": "timeseries",
+    "interval": "1s"
+  },
+  {
+    "datasource": {
+      "type": "grafana-postgresql-datasource",
+      "uid": "postgres-events"
+    },
+    "fieldConfig": {
+      "defaults": {
+        "color": {
+          "mode": "palette-classic"
+        },
+        "custom": {
+          "fillOpacity": 70,
+          "hideFrom": {
+            "legend": false,
+            "tooltip": false,
+            "viz": false
+          },
+          "insertNulls": false,
+          "lineWidth": 0,
+          "spanNulls": false
+        },
+        "mappings": [
+          {
+            "options": {
+              "0": {
+                "color": "#00000000",
+                "index": 0,
+                "text": "IDLE"
+              },
+              "11": {
+                "color": "green",
+                "index": 1,
+                "text": "TASK_RUNNING"
+              },
+              "13": {
+                "color": "dark-green",
+                "index": 2,
+                "text": "WORKER_RECEIVED_NEW_TASK"
+              },
+              "17": {
+                "color": "gray",
+                "index": 16,
+                "text": "DEBUG"
+              },
+              "18": {
+                "color": "yellow",
+                "index": 17,
+                "text": "ANALYSE_TASK"
+              },
+              "19": {
+                "color": "light-blue",
+                "index": 18,
+                "text": "UPDATE_GRAPH"
+              },
+              "20": {
+                "color": "dark-yellow",
+                "index": 19,
+                "text": "WAIT_FOR_DATA"
+              },
+              "21": {
+                "color": "red",
+                "index": 20,
+                "text": "END_OF_APP"
+              },
+              "22": {
+                "color": "light-gray",
+                "index": 21,
+                "text": "ALREADY_ACCESSED"
+              },
+              "23": {
+                "color": "dark-blue",
+                "index": 22,
+                "text": "REGISTER_DATA_ACCESS"
+              },
+              "24": {
+                "color": "brown",
+                "index": 23,
+                "text": "TRANSFER_OPEN_FILE"
+              },
+              "25": {
+                "color": "light-brown",
+                "index": 24,
+                "text": "TRANSFER_RAW_FILE"
+              },
+              "26": {
+                "color": "dark-brown",
+                "index": 25,
+                "text": "TRANSFER_OBJECT"
+              },
+              "27": {
+                "color": "olive",
+                "index": 26,
+                "text": "NEW_VERSION_SAME_VALUE"
+              },
+              "31": {
+                "color": "dark-olive",
+                "index": 27,
+                "text": "BLOCK_AND_GET_RESULT_FILES"
+              },
+              "32": {
+                "color": "lime",
+                "index": 28,
+                "text": "UNBLOCK_RESULT_FILES"
+              },
+              "33": {
+                "color": "black",
+                "index": 29,
+                "text": "SHUTDOWN"
+              },
+              "34": {
+                "color": "navy",
+                "index": 30,
+                "text": "GRAPHSTATE"
+              },
+              "35": {
+                "color": "indigo",
+                "index": 31,
+                "text": "TASKSTATE"
+              },
+              "36": {
+                "color": "maroon",
+                "index": 32,
+                "text": "DELETE_DATA"
+              },
+              "37": {
+                "color": "salmon",
+                "index": 33,
+                "text": "FINISH_DATA_ACCESS"
+              },
+              "38": {
+                "color": "skyblue",
+                "index": 34,
+                "text": "REGISTER_REMOTE_DATA"
+              },
+              "41": {
+                "color": "light-purple",
+                "index": 35,
+                "text": "CANCEL_TASK_GROUP"
+              },
+              "42": {
+                "color": "khaki",
+                "index": 36,
+                "text": "REMOVE_APP_DATA"
+              },
+              "45": {
+                "color": "dark-red",
+                "index": 42,
+                "text": "ACTION_UPDATE"
+              },
+              "46": {
+                "color": "dark-green",
+                "index": 43,
+                "text": "CE_REGISTRATION"
+              },
+              "47": {
+                "color": "light-green",
+                "index": 44,
+                "text": "EXECUTE_TASKS"
+              },
+              "48": {
+                "color": "dark-blue",
+                "index": 45,
+                "text": "GET_CURRENT_SCHEDULE"
+              },
+              "49": {
+                "color": "dark-gray",
+                "index": 46,
+                "text": "PRINT_CURRENT_GRAPH"
+              },
+              "50": {
+                "color": "light-gray",
+                "index": 47,
+                "text": "MONITORING_DATA"
+              },
+              "51": {
+                "color": "black",
+                "index": 48,
+                "text": "TD_SHUTDOWN"
+              },
+              "52": {
+                "color": "light-yellow",
+                "index": 49,
+                "text": "UPDATE_CEI_LOCAL"
+              },
+              "53": {
+                "color": "light-orange",
+                "index": 50,
+                "text": "WORKER_UPDATE_REQUEST"
+              },
+              "54": {
+                "color": "light-green",
+                "index": 3,
+                "text": "CREATING_TASK_SANDBOX"
+              },
+              "55": {
+                "color": "light-red",
+                "index": 4,
+                "text": "REMOVING_TASK_SANDBOX"
+              },
+              "56": {
+                "color": "gold",
+                "index": 37,
+                "text": "CANCEL_ALL_TASKS"
+              },
+              "57": {
+                "color": "crimson",
+                "index": 51,
+                "text": "CANCEL_TASKS"
+              },
+              "58": {
+                "color": "red",
+                "index": 53,
+                "text": "TASK_TIMEOUT"
+              },
+              "59": {
+                "color": "dark-violet",
+                "index": 52,
+                "text": "WORKER_RESTART_REQUEST"
+              },
+              "60": {
+                "color": "orange",
+                "index": 5,
+                "text": "FETCH_PARAM"
+              },
+              "61": {
+                "color": "dark-orange",
+                "index": 6,
+                "text": "REMOVE_OBSOLETES"
+              },
+              "62": {
+                "color": "light-blue",
+                "index": 7,
+                "text": "BIND_ORIG_NAME"
+              },
+              "63": {
+                "color": "blue",
+                "index": 8,
+                "text": "UNBIND_ORIG_NAME"
+              },
+              "64": {
+                "color": "teal",
+                "index": 9,
+                "text": "CHECK_OUT_PARAM"
+              },
+              "65": {
+                "color": "purple",
+                "index": 11,
+                "text": "INIT_FS"
+              },
+              "66": {
+                "color": "violet",
+                "index": 12,
+                "text": "LOCAL_COPY"
+              },
+              "67": {
+                "color": "pink",
+                "index": 13,
+                "text": "LOCAL_MOVE"
+              },
+              "68": {
+                "color": "dark-pink",
+                "index": 14,
+                "text": "LOCAL_DELETE"
+              },
+              "69": {
+                "color": "magenta",
+                "index": 15,
+                "text": "LOCAL_SERIALIZE"
+              },
+              "81": {
+                "color": "orchid",
+                "index": 38,
+                "text": "CP_SHUTDOWN_NOTIFICATION"
+              },
+              "82": {
+                "color": "dark-cyan",
+                "index": 39,
+                "text": "AP_SNAPSHOT"
+              },
+              "83": {
+                "color": "steelblue",
+                "index": 40,
+                "text": "AP_CHECKPOINT_REQUEST"
+              },
+              "90": {
+                "color": "cyan",
+                "index": 10,
+                "text": "INSTRUMENTING_CLASS"
+              },
+              "91": {
+                "color": "turquoise",
+                "index": 41,
+                "text": "AP_GET_LAST_DATA"
+              }
+            },
+            "type": "value"
+          }
+        ],
+        "thresholds": {
+          "mode": "absolute",
+          "steps": [
+            {
+              "color": "green",
+              "value": null
+            }
+          ]
+        }
+      },
+      "overrides": []
+    },
+    "gridPos": {
+      "h": 6,
+      "w": 24,
+      "x": 0,
+      "y": 9
+    },
+    "id": 5,
+    "options": {
+      "alignValue": "left",
+      "legend": {
+        "displayMode": "list",
+        "placement": "bottom",
+        "showLegend": true
+      },
+      "mergeValues": true,
+      "rowHeight": 0.9,
+      "showValue": "auto",
+      "tooltip": {
+        "mode": "single",
+        "sort": "none"
+      }
+    },
+    "pluginVersion": "11.1.0",
+    "targets": [
+      {
+        "datasource": {
+          "type": "grafana-postgresql-datasource",
+          "uid": "postgres-events"
+        },
+        "editorMode": "code",
+        "format": "time_series",
+        "rawQuery": true,
+        "rawSql": "SELECT\n  e.ts AS \"time\",\n  concat(e.thread_type,' #',e.thread_id) AS \"metric\",\n  NULLIF(e.event_code, 0)::double precision AS \"value\"   -- 0 → NULL (no se pinta)\nFROM events e\nWHERE $__timeFilter(e.ts)\n  AND e.agent_id = '127.0.0.1'\n  AND e.thread_type IN ('AP','TD')\n  AND e.event_type = 8001002   -- RUNTIME\nORDER BY e.ts;\n",
+        "refId": "A",
+        "sql": {
+          "columns": [
+            {
+              "parameters": [],
+              "type": "function"
+            }
+          ],
+          "groupBy": [
+            {
+              "property": {
+                "type": "string"
+              },
+              "type": "groupBy"
+            }
+          ],
+          "limit": 50
+        }
+      }
+    ],
+    "title": "Runtime State",
+    "type": "state-timeline"
+  },
+  {
+    "datasource": {
+      "type": "grafana-postgresql-datasource",
+      "uid": "postgres-events"
+    },
+    "fieldConfig": {
+      "defaults": {
+        "color": {
+          "mode": "palette-classic"
+        },
+        "custom": {
+          "fillOpacity": 70,
+          "hideFrom": {
+            "legend": false,
+            "tooltip": false,
+            "viz": false
+          },
+          "insertNulls": false,
+          "lineWidth": 0,
+          "spanNulls": false
+        },
+        "mappings": [
+          {
+            "options": {
+              "0": {
+                "color": "#00000000",
+                "index": 0,
+                "text": "IDLE"
+              },
+              "11": {
+                "color": "green",
+                "index": 1,
+                "text": "TASK_RUNNING"
+              },
+              "13": {
+                "color": "dark-green",
+                "index": 2,
+                "text": "WORKER_RECEIVED_NEW_TASK"
+              },
+              "17": {
+                "color": "gray",
+                "index": 16,
+                "text": "DEBUG"
+              },
+              "18": {
+                "color": "yellow",
+                "index": 17,
+                "text": "ANALYSE_TASK"
+              },
+              "19": {
+                "color": "light-blue",
+                "index": 18,
+                "text": "UPDATE_GRAPH"
+              },
+              "20": {
+                "color": "dark-yellow",
+                "index": 19,
+                "text": "WAIT_FOR_DATA"
+              },
+              "21": {
+                "color": "red",
+                "index": 20,
+                "text": "END_OF_APP"
+              },
+              "22": {
+                "color": "light-gray",
+                "index": 21,
+                "text": "ALREADY_ACCESSED"
+              },
+              "23": {
+                "color": "dark-blue",
+                "index": 22,
+                "text": "REGISTER_DATA_ACCESS"
+              },
+              "24": {
+                "color": "brown",
+                "index": 23,
+                "text": "TRANSFER_OPEN_FILE"
+              },
+              "25": {
+                "color": "light-brown",
+                "index": 24,
+                "text": "TRANSFER_RAW_FILE"
+              },
+              "26": {
+                "color": "dark-brown",
+                "index": 25,
+                "text": "TRANSFER_OBJECT"
+              },
+              "27": {
+                "color": "olive",
+                "index": 26,
+                "text": "NEW_VERSION_SAME_VALUE"
+              },
+              "31": {
+                "color": "dark-olive",
+                "index": 27,
+                "text": "BLOCK_AND_GET_RESULT_FILES"
+              },
+              "32": {
+                "color": "lime",
+                "index": 28,
+                "text": "UNBLOCK_RESULT_FILES"
+              },
+              "33": {
+                "color": "black",
+                "index": 29,
+                "text": "SHUTDOWN"
+              },
+              "34": {
+                "color": "navy",
+                "index": 30,
+                "text": "GRAPHSTATE"
+              },
+              "35": {
+                "color": "indigo",
+                "index": 31,
+                "text": "TASKSTATE"
+              },
+              "36": {
+                "color": "maroon",
+                "index": 32,
+                "text": "DELETE_DATA"
+              },
+              "37": {
+                "color": "salmon",
+                "index": 33,
+                "text": "FINISH_DATA_ACCESS"
+              },
+              "38": {
+                "color": "skyblue",
+                "index": 34,
+                "text": "REGISTER_REMOTE_DATA"
+              },
+              "41": {
+                "color": "light-purple",
+                "index": 35,
+                "text": "CANCEL_TASK_GROUP"
+              },
+              "42": {
+                "color": "khaki",
+                "index": 36,
+                "text": "REMOVE_APP_DATA"
+              },
+              "45": {
+                "color": "dark-red",
+                "index": 42,
+                "text": "ACTION_UPDATE"
+              },
+              "46": {
+                "color": "dark-green",
+                "index": 43,
+                "text": "CE_REGISTRATION"
+              },
+              "47": {
+                "color": "light-green",
+                "index": 44,
+                "text": "EXECUTE_TASKS"
+              },
+              "48": {
+                "color": "dark-blue",
+                "index": 45,
+                "text": "GET_CURRENT_SCHEDULE"
+              },
+              "49": {
+                "color": "dark-gray",
+                "index": 46,
+                "text": "PRINT_CURRENT_GRAPH"
+              },
+              "50": {
+                "color": "light-gray",
+                "index": 47,
+                "text": "MONITORING_DATA"
+              },
+              "51": {
+                "color": "black",
+                "index": 48,
+                "text": "TD_SHUTDOWN"
+              },
+              "52": {
+                "color": "light-yellow",
+                "index": 49,
+                "text": "UPDATE_CEI_LOCAL"
+              },
+              "53": {
+                "color": "light-orange",
+                "index": 50,
+                "text": "WORKER_UPDATE_REQUEST"
+              },
+              "54": {
+                "color": "light-green",
+                "index": 3,
+                "text": "CREATING_TASK_SANDBOX"
+              },
+              "55": {
+                "color": "light-red",
+                "index": 4,
+                "text": "REMOVING_TASK_SANDBOX"
+              },
+              "56": {
+                "color": "gold",
+                "index": 37,
+                "text": "CANCEL_ALL_TASKS"
+              },
+              "57": {
+                "color": "crimson",
+                "index": 51,
+                "text": "CANCEL_TASKS"
+              },
+              "58": {
+                "color": "red",
+                "index": 53,
+                "text": "TASK_TIMEOUT"
+              },
+              "59": {
+                "color": "dark-violet",
+                "index": 52,
+                "text": "WORKER_RESTART_REQUEST"
+              },
+              "60": {
+                "color": "orange",
+                "index": 5,
+                "text": "FETCH_PARAM"
+              },
+              "61": {
+                "color": "dark-orange",
+                "index": 6,
+                "text": "REMOVE_OBSOLETES"
+              },
+              "62": {
+                "color": "light-blue",
+                "index": 7,
+                "text": "BIND_ORIG_NAME"
+              },
+              "63": {
+                "color": "blue",
+                "index": 8,
+                "text": "UNBIND_ORIG_NAME"
+              },
+              "64": {
+                "color": "teal",
+                "index": 9,
+                "text": "CHECK_OUT_PARAM"
+              },
+              "65": {
+                "color": "purple",
+                "index": 11,
+                "text": "INIT_FS"
+              },
+              "66": {
+                "color": "violet",
+                "index": 12,
+                "text": "LOCAL_COPY"
+              },
+              "67": {
+                "color": "pink",
+                "index": 13,
+                "text": "LOCAL_MOVE"
+              },
+              "68": {
+                "color": "dark-pink",
+                "index": 14,
+                "text": "LOCAL_DELETE"
+              },
+              "69": {
+                "color": "magenta",
+                "index": 15,
+                "text": "LOCAL_SERIALIZE"
+              },
+              "81": {
+                "color": "orchid",
+                "index": 38,
+                "text": "CP_SHUTDOWN_NOTIFICATION"
+              },
+              "82": {
+                "color": "dark-cyan",
+                "index": 39,
+                "text": "AP_SNAPSHOT"
+              },
+              "83": {
+                "color": "steelblue",
+                "index": 40,
+                "text": "AP_CHECKPOINT_REQUEST"
+              },
+              "90": {
+                "color": "cyan",
+                "index": 10,
+                "text": "INSTRUMENTING_CLASS"
+              },
+              "91": {
+                "color": "turquoise",
+                "index": 41,
+                "text": "AP_GET_LAST_DATA"
+              }
+            },
+            "type": "value"
+          }
+        ],
+        "thresholds": {
+          "mode": "absolute",
+          "steps": [
+            {
+              "color": "green",
+              "value": null
+            }
+          ]
+        }
+      },
+      "overrides": []
+    },
+    "gridPos": {
+      "h": 8,
+      "w": 12,
+      "x": 0,
+      "y": 17
+    },
+    "id": 6,
+    "options": {
+      "alignValue": "left",
+      "legend": {
+        "displayMode": "list",
+        "placement": "bottom",
+        "showLegend": true
+      },
+      "mergeValues": true,
+      "rowHeight": 0.9,
+      "showValue": "auto",
+      "tooltip": {
+        "mode": "single",
+        "sort": "none"
+      }
+    },
+    "pluginVersion": "11.1.0",
+    "targets": [
+      {
+        "datasource": {
+          "type": "grafana-postgresql-datasource",
+          "uid": "postgres-events"
+        },
+        "editorMode": "code",
+        "format": "time_series",
+        "rawQuery": true,
+        "rawSql": "SELECT\n  e.ts AS \"time\",\n  concat('EXEC #', e.thread_id) AS \"metric\",\n  NULLIF(e.event_code, 0)::double precision AS \"value\"\nFROM events e\nWHERE $__timeFilter(e.ts)\n  AND e.agent_id = '127.0.0.1'\n  AND e.thread_type = 'EXEC'\n  AND e.event_type = 8001002\nORDER BY e.ts;\n",
+        "refId": "A",
+        "sql": {
+          "columns": [
+            {
+              "parameters": [],
+              "type": "function"
+            }
+          ],
+          "groupBy": [
+            {
+              "property": {
+                "type": "string"
+              },
+              "type": "groupBy"
+            }
+          ],
+          "limit": 50
+        }
+      }
+    ],
+    "title": "Executors State",
+    "type": "state-timeline"
+  },
+  {
+    "datasource": {
+      "type": "grafana-postgresql-datasource",
+      "uid": "postgres-events"
+    },
+    "fieldConfig": {
+      "defaults": {
+        "color": {
+          "mode": "palette-classic"
+        },
+        "custom": {
+          "fillOpacity": 70,
+          "hideFrom": {
+            "legend": false,
+            "tooltip": false,
+            "viz": false
+          },
+          "insertNulls": false,
+          "lineWidth": 0,
+          "spanNulls": false
+        },
+        "mappings": [
+          {
+            "options": {
+              "1": {
+                "color": "dark-red",
+                "index": 0,
+                "text": "LOADING_RUNTIME"
+              },
+              "2": {
+                "color": "dark-orange",
+                "index": 1,
+                "text": "START"
+              },
+              "3": {
+                "color": "dark-yellow",
+                "index": 2,
+                "text": "STOP"
+              },
+              "4": {
+                "color": "dark-green",
+                "index": 3,
+                "text": "TASK"
+              },
+              "5": {
+                "color": "dark-blue",
+                "index": 4,
+                "text": "NO_MORE_TASKS"
+              },
+              "6": {
+                "color": "dark-purple",
+                "index": 5,
+                "text": "WAIT_FOR_ALL_TASKS"
+              },
+              "7": {
+                "color": "light-red",
+                "index": 6,
+                "text": "OPEN_FILE"
+              },
+              "8": {
+                "color": "light-yellow",
+                "index": 8,
+                "text": "GET_FILE"
+              },
+              "9": {
+                "color": "light-green",
+                "index": 9,
+                "text": "GET_OBJECT"
+              },
+              "10": {
+                "color": "light-blue",
+                "index": 10,
+                "text": "GET_BINDING_OBJECT"
+              },
+              "12": {
+                "color": "super-light-red",
+                "index": 12,
+                "text": "DELETE"
+              },
+              "57": {
+                "color": "light-orange",
+                "index": 7,
+                "text": "OPEN_DIRECTORY"
+              },
+              "58": {
+                "color": "light-purple",
+                "index": 11,
+                "text": "GET_DIRECTORY"
+              },
+              "59": {
+                "color": "super-light-yellow",
+                "index": 13,
+                "text": "WAIT_FOR_CONCURRENT"
+              },
+              "80": {
+                "color": "super-light-blue",
+                "index": 14,
+                "text": "SNAPSHOT_API"
+              }
+            },
+            "type": "value"
+          }
+        ],
+        "thresholds": {
+          "mode": "absolute",
+          "steps": [
+            {
+              "color": "green",
+              "value": null
+            }
+          ]
+        }
+      },
+      "overrides": []
+    },
+    "gridPos": {
+      "h": 8,
+      "w": 12,
+      "x": 12,
+      "y": 17
+    },
+    "id": 7,
+    "options": {
+      "alignValue": "left",
+      "legend": {
+        "displayMode": "list",
+        "placement": "bottom",
+        "showLegend": true
+      },
+      "mergeValues": true,
+      "rowHeight": 0.9,
+      "showValue": "auto",
+      "tooltip": {
+        "mode": "single",
+        "sort": "none"
+      }
+    },
+    "pluginVersion": "11.1.0",
+    "targets": [
+      {
+        "datasource": {
+          "type": "grafana-postgresql-datasource",
+          "uid": "postgres-events"
+        },
+        "editorMode": "code",
+        "format": "time_series",
+        "rawQuery": true,
+        "rawSql": "SELECT\n  e.ts AS \"time\",\n  concat('EXEC #', e.thread_id) AS \"metric\",\n  NULLIF(e.event_code, 0)::double precision AS \"value\"\nFROM events e\nWHERE $__timeFilter(e.ts)\n  AND e.agent_id = '127.0.0.1'\n  AND e.thread_type = 'EXEC'\n  AND e.event_type = 8001001   -- API\nORDER BY e.ts;",
+        "refId": "A",
+        "sql": {
+          "columns": [
+            {
+              "parameters": [],
+              "type": "function"
+            }
+          ],
+          "groupBy": [
+            {
+              "property": {
+                "type": "string"
+              },
+              "type": "groupBy"
+            }
+          ],
+          "limit": 50
+        }
+      }
+    ],
+    "title": "Executors API State",
+    "type": "state-timeline"
+  },
+  {
+    "datasource": {
+      "type": "grafana-postgresql-datasource",
+      "uid": "postgres-events"
+    },
+    "fieldConfig": {
+      "defaults": {
+        "color": {
+          "mode": "palette-classic"
+        },
+        "custom": {
+          "fillOpacity": 70,
+          "hideFrom": {
+            "legend": false,
+            "tooltip": false,
+            "viz": false
+          },
+          "insertNulls": false,
+          "lineWidth": 0,
+          "spanNulls": false
+        },
+        "mappings": [
+          {
+            "options": {
+              "core#0": {
+                "color": "transparent",
+                "index": 0,
+                "text": "Idle"
+              }
+            },
+            "type": "value"
+          }
+        ],
+        "thresholds": {
+          "mode": "absolute",
+          "steps": [
+            {
+              "color": "green"
+            }
+          ]
+        }
+      },
+      "overrides": []
+    },
+    "gridPos": {
+      "h": 8,
+      "w": 24,
+      "x": 0,
+      "y": 25
+    },
+    "id": 1,
+    "options": {
+      "alignValue": "left",
+      "legend": {
+        "displayMode": "list",
+        "placement": "bottom",
+        "showLegend": true
+      },
+      "mergeValues": true,
+      "rowHeight": 0.9,
+      "showValue": "auto",
+      "tooltip": {
+        "mode": "single",
+        "sort": "none"
+      }
+    },
+    "pluginVersion": "11.1.0",
+    "targets": [
+      {
+        "datasource": {
+          "type": "grafana-postgresql-datasource",
+          "uid": "postgres-events"
+        },
+        "editorMode": "code",
+        "format": "time_series",
+        "rawQuery": true,
+        "rawSql": "SELECT\n  e.ts AS \"time\",\n  concat('EXEC #', e.thread_id) AS \"metric\",\n  NULLIF(e.func_name, 'core#0') AS \"value\"\nFROM events e\nWHERE $__timeFilter(e.ts)\n  AND e.agent_id = '127.0.0.1'\n  AND e.thread_type = 'EXEC'\n  AND e.event_type = 8000000\nORDER BY e.ts;",
+        "refId": "A",
+        "sql": {
+          "columns": [
+            {
+              "parameters": [],
+              "type": "function"
+            }
+          ],
+          "groupBy": [
+            {
+              "property": {
+                "type": "string"
+              },
+              "type": "groupBy"
+            }
+          ],
+          "limit": 50
+        }
+      }
+    ],
+    "title": "Executor Tasks",
+    "transformations": [
+      {
+        "id": "partitionByValues",
+        "options": {
+          "fields": [
+            "metric"
+          ],
+          "keepFields": false,
+          "naming": {
+            "asLabels": true
+          }
+        }
+      }
+    ],
+    "type": "state-timeline"
+  }
+]

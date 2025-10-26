@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply font-sans antialiased;
+    font-feature-settings: "kern" 1;         /* opcional, buen kerning */
+    font-optical-sizing: auto;               /* aprovecha el eje opsz si procede */
+    text-rendering: optimizeLegibility;      /* suaviza lectura */
+  }
+}
